@@ -92,7 +92,7 @@ const Moviedetails = () => {
         </div>
       </div>
 
-      <div className="my-20 xs:pb-10">
+      <div className="py-20 xs:pb-10">
         <Button variant="primary"  onClick={() => navigate(-1)}>
           Go back
         </Button>
