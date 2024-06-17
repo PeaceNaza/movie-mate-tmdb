@@ -26,12 +26,12 @@ const Homepage = () => {
         </div>
 
         <div className="w-1/2 mt-5">
-          <div className="grid xs:grid-cols-6 gap-1">
-            <div className="col-start-1 xs:col-span-3">
+          <div className="grid grid-cols-6 gap-1">
+            <div className="col-start-1 col-span-3">
               <Poster movieId={183} />
             </div>
             <div className="col-start-1 col-end-3"> </div>
-            <div className="sm:col-end-7 col-span-3 pb-10 xs:col-end-9">
+            <div className="col-end-7 col-span-3">
               <Poster movieId={20} />
             </div>
           </div>
