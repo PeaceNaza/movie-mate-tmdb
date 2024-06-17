@@ -25,13 +25,13 @@ const Homepage = () => {
           </div>
         </div>
 
-        <div className="w-1/2">
+        <div className="w-1/2 mt-5 min-h-full bg-inherit">
           <div className="grid xs:grid-cols-6 gap-1">
             <div className="col-start-1 xs:col-span-3">
               <Poster movieId={183} />
             </div>
             <div className="col-start-1 col-end-3"> </div>
-            <div className="col-end-7 col-span-3 xs:col-end-8 mb-20">
+            <div className="sm:col-end-7 col-span-3 pb-20 sm:ml-0 xs:ml-20">
               <Poster movieId={20} />
             </div>
           </div>
