@@ -106,7 +106,7 @@ const MovieLists = () => {
         </div>
 
         {/* Pagination */}
-        <div className="flex justify-center mt-20 xs:pb-10">
+        <div className="flex justify-center mt-20 xs:pb-5">
           <button
             className="bg-white text-[#2A303C] px-3 py-1 mx-2 rounded-md shadow disabled:opacity-50 disabled:cursor-not-allowed sm:text-base xs:text-xs"
             onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
