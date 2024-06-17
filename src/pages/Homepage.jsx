@@ -31,7 +31,7 @@ const Homepage = () => {
               <Poster movieId={183} />
             </div>
             <div className="col-start-1 col-end-3"> </div>
-            <div className="sm:col-end-7 col-span-3 pb-20 sm:ml-0 xs:ml-20">
+            <div className="sm:col-end-7 col-span-3 pb-20 sm:ml-0 xs:pl-24">
               <Poster movieId={20} />
             </div>
           </div>
