@@ -32,7 +32,7 @@ const Poster = ({ movieId }) => {
   const posterurl = `${imageUrl}${data}`;
 
   return (
-    <div className="bg-inherit flex-shrink-0">
+    <div className="bg-inherit flex-shrink-0 pb-20">
       <img
         src={posterurl}
         alt="movie poster"
