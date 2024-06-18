@@ -8,7 +8,7 @@ const Homepage = () => {
     <>
       <Header />
       <main className="min-h-full w-full bg-white md:mt-10 xs:-mt-28 gap-5 flex md:flex-row xs:flex-col">
-        <div className="sm:w-1/2 xs:w-[70%]">
+        <div className="sm:w-1/2 xs:w-[80%]">
           <h1 className="text-3xl md:text-5xl lg:text-7xl mt-36 text-black">
             Learn more about your favourite movies
           </h1>
