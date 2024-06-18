@@ -7,7 +7,7 @@ const Homepage = () => {
   return (
     <>
       <Header />
-      <main className="py-5 min-h-full w-full bg-whitemd:mt-10 xs:-mt-24 gap-5 flex md:flex-row xs:flex-col h-screen bg-white">
+      <main className="min-h-full w-full bg-white md:mt-10 xs:-mt-24 gap-5 flex md:flex-row xs:flex-col h-screen">
         <div className="w-1/2">
           <h1 className="text-3xl md:text-4xl lg:text-7xl mt-36 text-black">
             Learn more about your favourite movies
@@ -25,13 +25,13 @@ const Homepage = () => {
           </div>
         </div>
 
-        <div className="sm:w-1/2 mt-5 xs:pb-10 xs:w-[92%] bg-white">
+        <div className="sm:w-1/2 mt-5 xs:w-full bg-white pr-5">
           <div className="grid grid-cols-6 gap-1">
             <div className="col-start-1 col-span-3">
               <Poster movieId={183} />
             </div>
             <div className="col-start-1 col-end-3"> </div>
-            <div className="col-end-7 col-span-3">
+            <div className="col-end-7 col-span-3 xs:col-end-7 xs:pb-20">
               <Poster movieId={20} />
             </div>
           </div>
