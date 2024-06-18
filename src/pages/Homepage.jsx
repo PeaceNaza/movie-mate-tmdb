@@ -25,7 +25,7 @@ const Homepage = () => {
           </div>
         </div>
 
-        <div className="w-1/2 mt-5">
+        <div className="sm:w-1/2 mt-5 xs:pb-10 xs:w-[92%] bg-white">
           <div className="grid grid-cols-6 gap-1">
             <div className="col-start-1 col-span-3">
               <Poster movieId={183} />
