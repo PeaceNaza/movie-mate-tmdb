@@ -83,7 +83,7 @@ const Moviedetails = () => {
 
             <FontAwesomeIcon
               icon={faHeart}
-              className={`${heartClass} mt-1 ml-2`}
+              className={`${heartClass} mt-1 ml-10`}
               onClick={() => toggleFavoriteMovie(movieDetails.id)}
             />
 
