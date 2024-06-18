@@ -7,7 +7,7 @@ const Homepage = () => {
   return (
     <>
       <Header />
-      <main className="md:mt-10 xs:-mt-24 gap-5 flex md:flex-row xs:flex-col h-screen bg-white min-h-screen mb-0">
+      <main className="py-5 min-h-full w-full bg-whitemd:mt-10 xs:-mt-24 gap-5 flex md:flex-row xs:flex-col h-screen bg-white">
         <div className="w-1/2">
           <h1 className="text-3xl md:text-4xl lg:text-7xl mt-36 text-black">
             Learn more about your favourite movies
