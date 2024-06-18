@@ -52,7 +52,7 @@ const Moviedetails = () => {
   return (
     <>
       <Header />
-      <h1 className="text-center font-medium text-5xl my-6 text-black">{movieDetails.title}</h1>
+      <h1 className="text-center font-medium md:text-5xl xs:text-3xl my-6 text-black">{movieDetails.title}</h1>
 
       <div className="mx-auto md:flex-row md:w-3/4 border flex xs:flex-col rounded-md">
         <img
@@ -61,7 +61,7 @@ const Moviedetails = () => {
           className="md:w-1/2 rounded-l-md"
         />
 
-        <div className="md:w-1/2 p-10 text-gray-500">
+        <div className="md:w-1/2 md:p-10 xs:p-5 text-gray-500">
           <p className="text-xl font-extralight">{movieDetails.overview}</p>
 
           <div className="flex justify-between my-5 text-xs">
