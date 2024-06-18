@@ -7,7 +7,7 @@ const Homepage = () => {
   return (
     <>
       <Header />
-      <main className="min-h-full w-full bg-white md:mt-10 xs:-mt-24 gap-5 flex md:flex-row xs:flex-col h-screen">
+      <main className="min-h-full h-screen w-full bg-white md:mt-10 xs:-mt-28 gap-5 flex md:flex-row xs:flex-col">
         <div className="w-1/2">
           <h1 className="text-3xl md:text-4xl lg:text-7xl mt-36 text-black">
             Learn more about your favourite movies
@@ -31,7 +31,7 @@ const Homepage = () => {
               <Poster movieId={183} />
             </div>
             <div className="col-start-1 col-end-3"> </div>
-            <div className="col-end-7 col-span-3 xs:col-end-7 xs:pb-20">
+            <div className="col-end-7 col-span-3 xs:col-end-7 xs:pb-10">
               <Poster movieId={20} />
             </div>
           </div>
