@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
 import Header from "../components/Layouts/Header";
 import { useState } from "react";
+import { Container, Title, Box,Flex } from "@mantine/core";
+import Button from './../components/Button';
 
 const MovieLists = () => {
   const [page, setPage] = useState(1);
@@ -41,12 +43,12 @@ const MovieLists = () => {
 
   if (isLoading) {
     return (
-      <div className="text-black">
+      <Container className="text-black p-5">
         <span className="loading loading-spinner loading-xs"></span>
         <span className="loading loading-spinner loading-sm"></span>
         <span className="loading loading-spinner loading-md"></span>
         <span className="loading loading-spinner loading-lg"></span>
-      </div>
+      </Container>
     );
   }
 
@@ -58,20 +60,20 @@ const MovieLists = () => {
     <>
       <Header />
       <main className="pb-20 min-h-screen bg-white">
-        <h1 className="text-3xl font-extrabold my-10 text-black">Lists of movies</h1>
+        <Title className="text-3xl font-extrabold my-10 text-black">Lists of movies</Title>
 
-        <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-10">
+        <Box className="grid lg:grid-cols-3 sm:grid-cols-2 gap-10">
           {displayMovies?.map((movie) => (
-            <div key={movie.id} to={`/movie/${movie.id}`}>
+            <Box key={movie.id} to={`/movie/${movie.id}`}>
               {" "}
-              <div className="bg-[#ffffffd8] rounded-lg border">
+              <Box className="bg-[#ffffffd8] rounded-lg border">
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                   alt={movie.title}
                   className="rounded-t-lg"
                 />
 
-                <div className="flex justify-between my-2">
+                <Box className="flex justify-between my-2">
                   <Link
                     to={`/movie/${movie.id}`}
                     className="text-2xl mt-1 mx-5 text-[#6563d2] mb-1"
@@ -86,27 +88,27 @@ const MovieLists = () => {
          ${favoriteMovies.includes(movie.id) ? "text-[#060606]" : "text-[#d9d9d9]"}`}
                     />
                   </button>
-                </div>
+                </Box>
 
                 <p className="text-sm mx-5 mb-2 text-[#6a7587]">{movie.overview.slice(0, 74)}...</p>
-                <div className="flex justify-between m-5 text-xs text-gray-500">
-                  <div className="flex gap-1">
+                <Flex className="justify-between m-5 text-xs text-gray-500">
+                  <Flex className="flex gap-1">
                     <FontAwesomeIcon icon={faStar} className="text-yellow-500 mt-[1px]" />
                     <span className="text-red-500">{movie.vote_average}</span>{" "}
                     <span>({movie.vote_count}+)</span>{" "}
-                  </div>
+                  </Flex>
 
-                  <div>
+                  <Box>
                     <p>{movie.release_date}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+                  </Box>
+                </Flex>
+              </Box>
+            </Box>
           ))}
-        </div>
+        </Box>
 
         {/* Pagination */}
-        <div className="flex justify-center mt-20 xs:pb-5">
+        <Flex className="justify-center mt-20 xs:pb-5">
           <button
             className="bg-white text-[#2A303C] px-3 py-1 mx-2 rounded-md shadow disabled:opacity-50 disabled:cursor-not-allowed sm:text-base xs:text-xs"
             onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
@@ -124,7 +126,7 @@ const MovieLists = () => {
           >
             Next page
           </button>
-        </div>
+        </Flex>
       </main>
     </>
   );

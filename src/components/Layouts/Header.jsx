@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.svg";
+import { Container, Image } from "@mantine/core";
 
 const Header = () => {
   return (
-    <div className="py-5 min-h-full w-full bg-white -ml-1">
+    <Container className="py-5 min-h-full w-full bg-white -ml-5">
       <Link to={"/"} className="flex gap-3 w-20">
-        <img src={logo} alt="logo" className="w-10 h-10" />
+        <Image src={logo} alt="logo" className="w-10 h-10" />
         <p className="text-[#a855f7] text-2xl">MovieMate</p>
       </Link>
-    </div>
+    </Container>
   );
 };
 

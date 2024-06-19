@@ -5,6 +5,7 @@ import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
 import useStore from "../store";
 import Header from "../components/Layouts/Header";
 import Button from "../components/Button";
+import { Container, Grid, Box, Title, Badge, ActionIcon, Anchor, GridCol, Flex, Text } from "@mantine/core";
 
 const Moviedetails = () => {
   const { movieId } = useParams();
@@ -36,12 +37,12 @@ const Moviedetails = () => {
 
   if (isLoading) {
     return (
-      <div className="text-white">
+      <Container className="text-black p-5">
         <span className="loading loading-spinner loading-xs"></span>
         <span className="loading loading-spinner loading-sm"></span>
         <span className="loading loading-spinner loading-md"></span>
         <span className="loading loading-spinner loading-lg"></span>
-      </div>
+      </Container>
     );
   }
 
@@ -52,51 +53,51 @@ const Moviedetails = () => {
   return (
     <>
       <Header />
-      <h1 className="text-center font-medium md:text-5xl xs:text-3xl my-6 text-black">{movieDetails.title}</h1>
+      
+      <Title  className="text-center font-medium md:text-5xl xs:text-3xl my-6 text-black">{movieDetails.title}</Title>
 
-      <div className="mx-auto md:flex-row md:w-3/4 border flex xs:flex-col rounded-md">
+      <Flex className="mx-auto md:flex-row md:w-3/4 border flex xs:flex-col rounded-md">
         <img
           src={`https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`}
           alt={movieDetails.title}
           className="md:w-1/2 rounded-l-md"
         />
 
-        <div className="md:w-1/2 md:p-10 xs:p-5 text-gray-500">
-          <p className="text-xl font-extralight">{movieDetails.overview}</p>
+        <Box className="md:w-1/2 md:p-10 xs:p-5 text-gray-500">
+          <Text className="text-xl font-extralight">{movieDetails.overview}</Text>
 
-          <div className="flex justify-between my-5 text-xs">
-            <div className="flex gap-1">
+          <Flex className="flex justify-between my-5 text-xs">
+            <Flex className="flex gap-1">
               <FontAwesomeIcon icon={faStar} className="text-yellow-500 mt-[1px]" />
               <span className="text-red-500">{movieDetails.vote_average}</span>
               <span>({movieDetails.vote_count}+)</span>
-            </div>
+            </Flex>
 
-            <div>
-              <p className="mr-5 text-secondary-500">{movieDetails.release_date}</p>
-            </div>
-          </div>
+          
+              <span className="mr-5 text-secondary-500">{movieDetails.release_date}</span>
+          
+          </Flex>
 
-          <div className="flex justify-between mt-10">
+          <Box className="flex justify-between mt-10">
             <p className="text-sm text-purple-600 mt-2">
               {movieDetails.genres.map((genre) => genre.name).join(", ")}
             </p>
 
             <FontAwesomeIcon
               icon={faHeart}
-              className={`${heartClass} mt-1 ml-10`}
+              className={`${heartClass} mt-1 ml- ml-10`}
               onClick={() => toggleFavoriteMovie(movieDetails.id)}
             />
+          </Box>
+        </Box>
+      </Flex>
+    
 
-            <div className="flex justify-between ml-3 text-xs leading-10"></div>
-          </div>
-        </div>
-      </div>
-
-      <div className="py-20 xs:pb-10">
+      <Box className="py-20 xs:pb-10">
         <Button variant="primary"  onClick={() => navigate(-1)}>
           Go back
         </Button>
-      </div>
+      </Box>
     </>
   );
 };

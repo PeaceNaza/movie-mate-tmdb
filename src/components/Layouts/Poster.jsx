@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 
+import { Box, Container, Text, Image } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
 
 const Poster = ({ movieId }) => {
@@ -15,30 +16,30 @@ const Poster = ({ movieId }) => {
 
   if (isLoading) {
     return (
-      <div className="text-white">
+      <Container className="text-black p-5">
         <span className="loading loading-spinner loading-xs"></span>
         <span className="loading loading-spinner loading-sm"></span>
         <span className="loading loading-spinner loading-md"></span>
         <span className="loading loading-spinner loading-lg"></span>
-      </div>
+      </Container>
     );
   }
 
   if (error) {
-    return <p className="text-red-600 font-extralight text-lg">Something went wrong</p>;
+    return <Text className="text-red-600 font-extralight text-lg">Something went wrong</Text>;
   }
 
   const imageUrl = "https://image.tmdb.org/t/p/w342/";
   const posterurl = `${imageUrl}${data}`;
 
   return (
-    <div className="min-h-full bg-white">
-      <img
+    <Box className="min-h-full bg-white">
+      <Image
         src={posterurl}
         alt="movie poster"
         className="w-full xs:min-w-[160px] xs:h-[250px] md:h-[400px] md:w-[350px]  shadow-xl transform transition-transform duration-300 hover:scale-[1.08]"
       />
-    </div>
+    </Box>
   );
 };
 
