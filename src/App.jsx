@@ -9,7 +9,7 @@ import { Box } from "@mantine/core";
 
 const App = () => {
   return (
-    <MantineProvider>
+    <MantineProvider withGlobalStyles withNormalCSS>
     <Box className="px-5 md:px-20 min-h-screen bg-white">
       <Router>
         <Routes>
