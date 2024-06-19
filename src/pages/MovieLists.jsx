@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
 import Header from "../components/Layouts/Header";
 import { useState } from "react";
-import { Container, Title, Box,Flex } from "@mantine/core";
+import { Container, Title, Box, Flex, Grid } from "@mantine/core";
 import Button from './../components/Button';
 
 const MovieLists = () => {
@@ -61,10 +61,9 @@ const MovieLists = () => {
       <Header />
       <main className="pb-20 min-h-screen bg-white">
         <Title className="text-3xl font-extrabold my-10 text-black">Lists of movies</Title>
-
-        <Box className="grid lg:grid-cols-3 sm:grid-cols-2 gap-10">
+       <Grid gutter="xl">
           {displayMovies?.map((movie) => (
-            <Box key={movie.id} to={`/movie/${movie.id}`}>
+            <Grid.Col  span="4" md="6" lg="4" key={movie.id} to={`/movie/${movie.id}`}>
               {" "}
               <Box className="bg-[#ffffffd8] rounded-lg border">
                 <img
@@ -103,9 +102,10 @@ const MovieLists = () => {
                   </Box>
                 </Flex>
               </Box>
-            </Box>
+            </Grid.Col>
           ))}
-        </Box>
+      
+        </Grid>
 
         {/* Pagination */}
         <Flex className="justify-center mt-20 xs:pb-5">
