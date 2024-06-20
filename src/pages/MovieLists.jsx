@@ -69,7 +69,6 @@ const MovieLists = () => {
             <Grid.Col
               span={{ base: 12, xs: 12, sm: 6, md: 6, lg: 4 }}
               key={movie.id}
-              component={Link}
               to={`/movie/${movie.id}`}
             >
               {" "}
@@ -83,7 +82,7 @@ const MovieLists = () => {
                 <Box className="flex justify-between my-2">
                   <Link
                     to={`/movie/${movie.id}`}
-                    className="text-2xl mt-1 mx-5 text-[#6563d2] mb-1"
+                    className="text-2xl mt-1 mx-5 text-[#6563d2] hover:underline mb-1"
                     title={movie.title}
                   >
                     {movie.title.length > 20 ? movie.title.slice(0, 19) + "..." : movie.title}
