@@ -5,8 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
 import Header from "../components/Layouts/Header";
 import { useState } from "react";
-import { Container, Title, Box, Flex, Grid } from "@mantine/core";
-import Button from "./../components/Button";
+import { Container, Title, Box, Flex, Grid, Group } from "@mantine/core";
+
 
 const MovieLists = () => {
   const [page, setPage] = useState(1);
@@ -63,7 +63,7 @@ const MovieLists = () => {
         <Title className="text-3xl font-extrabold my-10 text-black">Lists of movies</Title>
         <Grid
           gutter="xl"
-          className="grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
+          
         >
           {displayMovies?.map((movie) => (
             <Grid.Col
@@ -115,7 +115,7 @@ const MovieLists = () => {
         </Grid>
 
         {/* Pagination */}
-        <Flex className="justify-center mt-20 xs:pb-5">
+        <Group  className="justify-center mt-20 xs:pb-5">
           <button
             className="bg-white text-[#2A303C] px-3 py-1 mx-2 rounded-md shadow disabled:opacity-50 disabled:cursor-not-allowed sm:text-base xs:text-xs"
             onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
@@ -133,7 +133,7 @@ const MovieLists = () => {
           >
             Next page
           </button>
-        </Flex>
+        </Group>
       </main>
     </>
   );

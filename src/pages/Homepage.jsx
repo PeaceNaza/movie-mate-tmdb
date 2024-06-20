@@ -15,7 +15,7 @@ const Homepage = () => {
           </h1>
           {/**/}
 
-          <Flex className="mt-10 flex sm:gap-8 xs:gap-3">
+          <Flex className="mt-10 sm:gap-8 xs:gap-3">
             <Link to={"/movies"}>
               <Button variant="primary">Get started</Button>
             </Link>
