@@ -5,7 +5,18 @@ import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
 import useStore from "../store";
 import Header from "../components/Layouts/Header";
 import Button from "../components/Button";
-import { Container, Grid, Box, Title, Badge, ActionIcon, Anchor, GridCol, Flex, Text } from "@mantine/core";
+import {
+  Container,
+  Grid,
+  Box,
+  Title,
+  Badge,
+  ActionIcon,
+  Anchor,
+  GridCol,
+  Flex,
+  Text,
+} from "@mantine/core";
 
 const Moviedetails = () => {
   const { movieId } = useParams();
@@ -34,7 +45,6 @@ const Moviedetails = () => {
     isFavorite ? "text-[#060606]" : "text-[#d9d9d9]"
   }`;
 
-
   if (isLoading) {
     return (
       <Container className="text-black p-5">
@@ -53,8 +63,10 @@ const Moviedetails = () => {
   return (
     <>
       <Header />
-      
-      <Title  className="text-center font-medium md:text-5xl xs:text-3xl my-6 text-black">{movieDetails.title}</Title>
+
+      <Title className="text-center font-medium md:text-5xl xs:text-3xl my-6 text-black">
+        {movieDetails.title}
+      </Title>
 
       <Flex className="mx-auto md:flex-row md:w-3/4 border flex xs:flex-col rounded-md">
         <img
@@ -73,9 +85,7 @@ const Moviedetails = () => {
               <span>({movieDetails.vote_count}+)</span>
             </Flex>
 
-          
-              <span className="mr-5 text-secondary-500">{movieDetails.release_date}</span>
-          
+            <span className="mr-5 text-secondary-500">{movieDetails.release_date}</span>
           </Flex>
 
           <Box className="flex justify-between mt-10">
@@ -91,10 +101,9 @@ const Moviedetails = () => {
           </Box>
         </Box>
       </Flex>
-    
 
       <Box className="py-20 xs:pb-10">
-        <Button variant="primary"  onClick={() => navigate(-1)}>
+        <Button variant="primary" onClick={() => navigate(-1)}>
           Go back
         </Button>
       </Box>

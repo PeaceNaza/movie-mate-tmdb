@@ -6,7 +6,7 @@ import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
 import Header from "../components/Layouts/Header";
 import { useState } from "react";
 import { Container, Title, Box, Flex, Grid } from "@mantine/core";
-import Button from './../components/Button';
+import Button from "./../components/Button";
 
 const MovieLists = () => {
   const [page, setPage] = useState(1);
@@ -61,9 +61,17 @@ const MovieLists = () => {
       <Header />
       <main className="pb-20 min-h-screen bg-white">
         <Title className="text-3xl font-extrabold my-10 text-black">Lists of movies</Title>
-       <Grid gutter="xl">
+        <Grid
+          gutter="xl"
+          className="grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
+        >
           {displayMovies?.map((movie) => (
-            <Grid.Col  span="4" md="6" lg="4" key={movie.id} to={`/movie/${movie.id}`}>
+            <Grid.Col
+              span={{ base: 12, xs: 12, sm: 6, md: 6, lg: 4 }}
+              key={movie.id}
+              component={Link}
+              to={`/movie/${movie.id}`}
+            >
               {" "}
               <Box className="bg-[#ffffffd8] rounded-lg border">
                 <img
@@ -104,7 +112,6 @@ const MovieLists = () => {
               </Box>
             </Grid.Col>
           ))}
-      
         </Grid>
 
         {/* Pagination */}

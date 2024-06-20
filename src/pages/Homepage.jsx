@@ -2,12 +2,10 @@ import { Link } from "react-router-dom";
 import Header from "../components/Layouts/Header";
 import Poster from "../components/Layouts/Poster";
 import Button from "../components/Button";
-import{ Box, Flex, Group } from "@mantine/core";
+import { Box, Flex, Group } from "@mantine/core";
 
 const Homepage = () => {
-
   return (
-
     <>
       <Header />
       <Flex className="min-h-full w-full bg-white md:mt-10 xs:-mt-28 gap-5 md:flex-row xs:flex-col">

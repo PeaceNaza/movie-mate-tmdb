@@ -15,7 +15,7 @@ const Button = ({ variant, children, onClick }) => {
   return (
     <button
       className={`${baseClasses} ${variantClasses[variant]}`}
-      onClick={onClick ? () => onClick() : undefined}
+      onClick={onClick ? () => onClick() : undefined}
     >
       {children}
     </button>
