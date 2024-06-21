@@ -33,11 +33,11 @@ const Poster = ({ movieId }) => {
   const posterurl = `${imageUrl}${data}`;
 
   return (
-    <Box className="min-h-full bg-white">
+    <Box>
       <Image
         src={posterurl}
         alt="movie poster"
-        className="w-full xs:min-w-[160px] xs:h-[250px] md:h-[400px] md:w-[350px]  shadow-xl transform transition-transform duration-300 hover:scale-[1.08]"
+        className="xs:min-w-[160px] h-[230px] md:w-[240px]  shadow-xl transform transition-transform duration-300 hover:scale-[1.08]"
       />
     </Box>
   );

@@ -7,7 +7,6 @@ import Header from "../components/Layouts/Header";
 import { useState } from "react";
 import { Container, Title, Box, Flex, Grid, Group } from "@mantine/core";
 
-
 const MovieLists = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(44493);
@@ -61,10 +60,7 @@ const MovieLists = () => {
       <Header />
       <main className="pb-20 min-h-screen bg-white">
         <Title className="text-3xl font-extrabold my-10 text-black">Lists of movies</Title>
-        <Grid
-          gutter="xl"
-          
-        >
+        <Grid gutter="xl">
           {displayMovies?.map((movie) => (
             <Grid.Col
               span={{ base: 12, xs: 12, sm: 6, md: 6, lg: 4 }}
@@ -114,7 +110,7 @@ const MovieLists = () => {
         </Grid>
 
         {/* Pagination */}
-        <Group  className="justify-center mt-20 xs:pb-5">
+        <Group className="justify-center mt-20 xs:pb-5">
           <button
             className="bg-white text-[#2A303C] px-3 py-1 mx-2 rounded-md shadow disabled:opacity-50 disabled:cursor-not-allowed sm:text-base xs:text-xs"
             onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
