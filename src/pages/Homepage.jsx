@@ -29,12 +29,12 @@ const Homepage = () => {
  
       
       <Grid>
-        <Grid.Col span={6}>
+        <Grid.Col span={7}>
           <Grid gutter="5">
-        <Grid.Col span={9}>
+        <Grid.Col span={9} offset={{base: 0, lg: 3}}>
           <Poster movieId={183} />
         </Grid.Col>
-        <Grid.Col span={9} offset={{base: 12, sm: 9}}>
+        <Grid.Col span={9} offset={{base: 10.5, sm: 12}}>
           <Poster movieId={20} />
         </Grid.Col>
         </Grid>
