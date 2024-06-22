@@ -5,8 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
 import Header from "../components/Layouts/Header";
 import { useState } from "react";
-import { LoadingOverlay, Button, Title, Box, Flex, Grid, Group, Text } from "@mantine/core";
-
+import { LoadingOverlay, Button, Image, Title, Box, Flex, Grid, Group, Text } from "@mantine/core";
 
 const MovieLists = () => {
   const [page, setPage] = useState(1);
@@ -37,7 +36,7 @@ const MovieLists = () => {
     setSearchTerm: state.setSearchTerm,
   }));
 
-    const displayMovies = data?.results
+  const displayMovies = data?.results
     ?.filter((movie) => movie.title.toLowerCase().includes(searchTerm.toLowerCase()))
     .slice(0, moviePerPage);
 
@@ -52,81 +51,94 @@ const MovieLists = () => {
   return (
     <>
       <Group pos="relative">
-      <Header />
-      <LoadingOverlay visible={isLoading} zIndex={1000} overlayProps={{  radius: "sm", blur: 2, }} />
-      <Box pb={20} mih="100vh" bg="white">
-        <Title fw={800} size="35px" mb={30} c="black">Lists of movies</Title>
-        <Grid gutter="xl">
-          {displayMovies?.map((movie) => (
-            <Grid.Col
-              span={{ base: 12, xs: 12, sm: 6, md: 6, lg: 4 }}
-              key={movie.id}
-              to={`/movie/${movie.id}`}
-            >
-              {" "}
-              <Box bg="#ffffffd8" radius className=" rounded-lg border">
-                <img
-                  src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                  alt={movie.title}
-                  className="rounded-t-lg"
-                />
+        <Header />
+        <LoadingOverlay
+          visible={isLoading}
+          zIndex={1000}
+          overlayProps={{ radius: "sm", blur: 2 }}
+        />
+        <Box pb={20} mih="100vh" bg="white">
+          <Title fw={800} size="35px" mb={30} c="black">
+            Lists of movies
+          </Title>
+          <Grid gutter="xl">
+            {displayMovies?.map((movie) => (
+              <Grid.Col
+                span={{ base: 12, xs: 12, sm: 6, md: 6, lg: 4 }}
+                key={movie.id}
+                to={`/movie/${movie.id}`}
+              >
+                {" "}
+                <Box bg="#ffffffd8" style={{ borderWidth: "1px", borderRadius: "8px" }}>
+                  <Image
+                    src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                    alt={movie.title}
+                    className="rounded-t-lg"
+                  />
 
-                <Flex className="flex justify-between my-2">
-                  <Link
-                    to={`/movie/${movie.id}`}
-                    className="text-2xl mt-1 mx-5 text-[#6563d2] hover:underline mb-1"
-                    title={movie.title}
-                  >
-                    {movie.title.length > 20 ? movie.title.slice(0, 19) + "..." : movie.title}
-                  </Link>
-    
+                  <Flex my="8px" justify="space-between">
+                    <Link
+                      to={`/movie/${movie.id}`}
+                      className="text-2xl mt-1 mx-5 text-[#6563d2] hover:underline mb-1"
+                      title={movie.title}
+                    >
+                      {movie.title.length > 20 ? movie.title.slice(0, 19) + "..." : movie.title}
+                    </Link>
+
                     <FontAwesomeIcon
                       icon={faHeart}
                       className={`heart  h-6 w-5 mt-2 mr-4 
          ${favoriteMovies.includes(movie.id) ? "text-[#060606]" : "text-[#d9d9d9]"}`}
-         onClick={() => toggleFavoriteMovie(movie.id)}
+                      onClick={() => toggleFavoriteMovie(movie.id)}
                     />
-                  
-                </Flex>
-
-                <p className="text-sm mx-5 mb-2 text-[#6a7587]">{movie.overview.slice(0, 74)}...</p>
-                <Flex className="justify-between m-5 text-xs text-gray-500">
-                  <Flex className="flex gap-1">
-                    <FontAwesomeIcon icon={faStar} className="text-yellow-500 mt-[1px]" />
-                    <span className="text-red-500">{movie.vote_average}</span>{" "}
-                    <span>({movie.vote_count}+)</span>{" "}
                   </Flex>
 
-                  
-                    <p>{movie.release_date}</p>
-                  
-                </Flex>
-              </Box>
-            </Grid.Col>
-          ))}
-        </Grid>
+                  <Text c="#6a7587" size="sm" mx="lg" mb="8px" fw={500}>
+                    {movie.overview.slice(0, 74)}...
+                  </Text>
+                  <Flex justify="space-between" m={20} c="#6a7587">
+                    <Flex gap={5}>
+                      <FontAwesomeIcon icon={faStar} className="text-yellow-500 mt-[1px] text-xs" />
+                      <Text size="xs" fw={500} c="red">
+                        {movie.vote_average}
+                      </Text>{" "}
+                      <Text size="xs" fw={500}>
+                        ({movie.vote_count}+)
+                      </Text>{" "}
+                    </Flex>
 
-        {/* Pagination */}
-        <Group className="justify-center mt-20 xs:pb-5">
-          <button
-            className="bg-white text-[#2A303C] px-3 py-1 mx-2 rounded-md shadow disabled:opacity-50 disabled:cursor-not-allowed sm:text-base xs:text-xs"
-            onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
-            disabled={page === 1}
-          >
-            Previous
-          </button>
-          <span className=" mx-2 my-2 text-black sm:text-base xs:text-xs">
-            Page {page} / {totalPages}
-          </span>
-          <button
-            className="bg-white text-[#2A303C] px-3 py-1 mx-2 rounded-md shadow disabled:opacity-50 disabled:cursor-not-allowed sm:text-base xs:text-xs"
-            onClick={() => setPage((prev) => prev + 1)}
-            disabled={page === totalPages}
-          >
-            Next page
-          </button>
-        </Group>
-      </Box>
+                    <Text size="xs" fw={500}>
+                      {movie.release_date}
+                    </Text>
+                  </Flex>
+                </Box>
+              </Grid.Col>
+            ))}
+          </Grid>
+
+          {/* Pagination */}
+          <Group justify="center" mt={80} p={20}>
+            <Button
+              variant="default"
+              className="disabled:cursor-not-allowed"
+              onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+              disabled={page === 1}
+            >
+              Previous
+            </Button>
+            <span className=" mx-2 my-2 text-black sm:text-base xs:text-xs">
+              Page {page} / {totalPages}
+            </span>
+            <Button
+              variant="default"
+              className="disabled:cursor-not-allowed"
+              onClick={() => setPage((prev) => prev + 1)}
+              disabled={page === totalPages}
+            >
+              Next page
+            </Button>
+          </Group>
+        </Box>
       </Group>
     </>
   );
