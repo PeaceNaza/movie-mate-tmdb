@@ -4,7 +4,6 @@ import Poster from "../components/Layouts/Poster";
 import Button from "../components/Button";
 import { Box, Flex, Group, Grid, RemoveScroll, Title } from "@mantine/core";
 import { useMediaQuery } from "@react-hook/media-query";
-import { persist } from "zustand/middleware";
 
 const Homepage = () => {
   const isDesktop = useMediaQuery("(min-width: 1024px)");
@@ -12,7 +11,7 @@ const Homepage = () => {
   const Content = (
     <Group gap="xl">
       <Box className="sm:w-1/2">
-        <Title order={1} fw={600} className="text-3xl lg:text-7xl md:text-4xl">
+        <Title order={1} fw={600} className="text-3xl lg:text-7xl md:text-5xl">
           Learn more about your favourite movies
         </Title>
 
@@ -27,13 +26,13 @@ const Homepage = () => {
         </Flex>
       </Box>
 
-      <Grid>
+      <Grid bg="white" mih="100vh">
         <Grid.Col span={7}>
           <Grid gutter="5">
             <Grid.Col span={9} offset={{ base: 0, lg: 3 }}>
               <Poster movieId={183} />
             </Grid.Col>
-            <Grid.Col span={9} offset={{ base: 10.5, lg: 12, sm: 9 }}>
+            <Grid.Col span={9} offset={{ base: 10.5, lg: 12, md: 9 }}>
               <Poster movieId={20} />
             </Grid.Col>
           </Grid>

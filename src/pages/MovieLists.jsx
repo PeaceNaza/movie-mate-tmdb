@@ -5,7 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
 import Header from "../components/Layouts/Header";
 import { useState } from "react";
-import { Container, Title, Box, Flex, Grid, Group } from "@mantine/core";
+import { LoadingOverlay, Button, Title, Box, Flex, Grid, Group, Text } from "@mantine/core";
+
 
 const MovieLists = () => {
   const [page, setPage] = useState(1);
@@ -36,30 +37,25 @@ const MovieLists = () => {
     setSearchTerm: state.setSearchTerm,
   }));
 
-  const displayMovies = data?.results
+    const displayMovies = data?.results
     ?.filter((movie) => movie.title.toLowerCase().includes(searchTerm.toLowerCase()))
     .slice(0, moviePerPage);
 
-  if (isLoading) {
-    return (
-      <Container className="text-black p-5">
-        <span className="loading loading-spinner loading-xs"></span>
-        <span className="loading loading-spinner loading-sm"></span>
-        <span className="loading loading-spinner loading-md"></span>
-        <span className="loading loading-spinner loading-lg"></span>
-      </Container>
-    );
-  }
-
   if (error) {
-    return <p className="text-red-600">Something went wrong</p>;
+    return (
+      <Text c="red" fw="lighter" size="lg">
+        Something went wrong
+      </Text>
+    );
   }
 
   return (
     <>
+      <Group pos="relative">
       <Header />
-      <main className="pb-20 min-h-screen bg-white">
-        <Title className="text-3xl font-extrabold my-10 text-black">Lists of movies</Title>
+      <LoadingOverlay visible={isLoading} zIndex={1000} overlayProps={{  radius: "sm", blur: 2, }} />
+      <Box pb={20} mih="100vh" bg="white">
+        <Title fw={800} size="35px" mb={30} c="black">Lists of movies</Title>
         <Grid gutter="xl">
           {displayMovies?.map((movie) => (
             <Grid.Col
@@ -68,14 +64,14 @@ const MovieLists = () => {
               to={`/movie/${movie.id}`}
             >
               {" "}
-              <Box className="bg-[#ffffffd8] rounded-lg border">
+              <Box bg="#ffffffd8" radius className=" rounded-lg border">
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                   alt={movie.title}
                   className="rounded-t-lg"
                 />
 
-                <Box className="flex justify-between my-2">
+                <Flex className="flex justify-between my-2">
                   <Link
                     to={`/movie/${movie.id}`}
                     className="text-2xl mt-1 mx-5 text-[#6563d2] hover:underline mb-1"
@@ -83,14 +79,15 @@ const MovieLists = () => {
                   >
                     {movie.title.length > 20 ? movie.title.slice(0, 19) + "..." : movie.title}
                   </Link>
-                  <button onClick={() => toggleFavoriteMovie(movie.id)}>
+    
                     <FontAwesomeIcon
                       icon={faHeart}
                       className={`heart  h-6 w-5 mt-2 mr-4 
          ${favoriteMovies.includes(movie.id) ? "text-[#060606]" : "text-[#d9d9d9]"}`}
+         onClick={() => toggleFavoriteMovie(movie.id)}
                     />
-                  </button>
-                </Box>
+                  
+                </Flex>
 
                 <p className="text-sm mx-5 mb-2 text-[#6a7587]">{movie.overview.slice(0, 74)}...</p>
                 <Flex className="justify-between m-5 text-xs text-gray-500">
@@ -100,9 +97,9 @@ const MovieLists = () => {
                     <span>({movie.vote_count}+)</span>{" "}
                   </Flex>
 
-                  <Box>
+                  
                     <p>{movie.release_date}</p>
-                  </Box>
+                  
                 </Flex>
               </Box>
             </Grid.Col>
@@ -129,7 +126,8 @@ const MovieLists = () => {
             Next page
           </button>
         </Group>
-      </main>
+      </Box>
+      </Group>
     </>
   );
 };

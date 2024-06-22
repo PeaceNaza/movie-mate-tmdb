@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-import { Box, Container, Text, Image } from "@mantine/core";
+import { Container, Text, Image, Transition } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
 
 const Poster = ({ movieId }) => {
@@ -16,30 +16,32 @@ const Poster = ({ movieId }) => {
 
   if (isLoading) {
     return (
-      <Container className="text-black p-5">
-        <span className="loading loading-spinner loading-xs"></span>
-        <span className="loading loading-spinner loading-sm"></span>
-        <span className="loading loading-spinner loading-md"></span>
+      <Container className="text-black">
         <span className="loading loading-spinner loading-lg"></span>
       </Container>
     );
   }
 
   if (error) {
-    return <Text className="text-red-600 font-extralight text-lg">Something went wrong</Text>;
+    return (
+      <Text c="red" fw="lighter" size="lg">
+        Something went wrong
+      </Text>
+    );
   }
 
   const imageUrl = "https://image.tmdb.org/t/p/w342/";
   const posterurl = `${imageUrl}${data}`;
 
   return (
-    <Box>
-      <Image
-        src={posterurl}
-        alt="movie poster"
-        className="xs:min-w-[160px] h-[230px] md:w-[250px]  shadow-xl transform transition-transform duration-300 hover:scale-[1.08]"
-      />
-    </Box>
+    <Image
+      miw="160px"
+      h={230}
+      w={{ md: "250px" }}
+      src={posterurl}
+      alt="movie poster"
+      className="transform transition-transform duration-300 hover:scale-[1.08]"
+    />
   );
 };
 
