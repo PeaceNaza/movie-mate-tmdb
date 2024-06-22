@@ -16,7 +16,7 @@ const PageNotFound = () => {
   }, [navigate]);
 
   return (
-    <Container className="min-h-screen w-screen bg-white">
+    <Container mih="100vh" w="100vw" bg="white">
       <SimpleGrid spacing={{ base: 40, sm: 80 }} cols={{ base: 1, sm: 2 }} className="mt-24">
         <div>
           <Title className="mt-14">Something is not right...</Title>
