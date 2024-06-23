@@ -56,6 +56,7 @@ const MovieLists = () => {
           visible={isLoading}
           zIndex={1000}
           overlayProps={{ radius: "sm", blur: 2 }}
+          loaderProps={{color: "#a855f7", size: "xl" }}
         />
         <Box pb={20} mih="100vh" bg="white">
           <Title fw={800} size="35px" mb={30} c="black">

@@ -11,7 +11,7 @@ const Homepage = () => {
   const Content = (
     <Group gap="xl">
       <Box className="sm:w-1/2">
-        <Title order={1} fw={600} className="text-3xl lg:text-7xl md:text-5xl">
+        <Title order={1} fw={600} className="xs:text-4xl lg:text-7xl">
           Learn more about your favourite movies
         </Title>
 

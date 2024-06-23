@@ -6,16 +6,13 @@ import useStore from "../store";
 import Header from "../components/Layouts/Header";
 import Button from "../components/Button";
 import {
-  Container,
-  Grid,
+  LoadingOverlay,
   Box,
   Title,
-  Badge,
-  ActionIcon,
-  Anchor,
-  GridCol,
+  Group,
   Flex,
   Text,
+  
 } from "@mantine/core";
 
 const Moviedetails = () => {
@@ -45,25 +42,25 @@ const Moviedetails = () => {
     isFavorite ? "text-[#060606]" : "text-[#d9d9d9]"
   }`;
 
-  if (isLoading) {
-    return (
-      <Container className="text-black p-5">
-        <span className="loading loading-spinner loading-xs"></span>
-        <span className="loading loading-spinner loading-sm"></span>
-        <span className="loading loading-spinner loading-md"></span>
-        <span className="loading loading-spinner loading-lg"></span>
-      </Container>
-    );
-  }
-
   if (error) {
-    return <p className="text-red-600 font-light text-lg">Something went wrong</p>;
+    return (
+      <Text c="red" fw="lighter" size="lg">
+        Something went wrong
+      </Text>
+    );
   }
 
   return (
     <>
+    <Group pos="relative">
       <Header />
-
+      <LoadingOverlay
+          visible={isLoading}
+          zIndex={1000}
+          overlayProps={{ radius: "sm", blur: 2 }}
+          loaderProps={{color: "#a855f7", size: "xl"}}
+        />
+        
       <Title className="text-center font-medium md:text-5xl xs:text-3xl my-6 text-black">
         {movieDetails.title}
       </Title>
@@ -107,6 +104,7 @@ const Moviedetails = () => {
           Go back
         </Button>
       </Box>
+      </Group>
     </>
   );
 };
