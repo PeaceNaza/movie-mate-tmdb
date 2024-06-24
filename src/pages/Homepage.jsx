@@ -26,7 +26,7 @@ const Homepage = () => {
         </Flex>
       </Box>
 
-      <Grid pb={10}>
+      <Grid pb={20}>
         <Grid.Col span={7}>
           <Grid gutter="5">
             <Grid.Col span={9} offset={{ base: 0, lg: 3 }}>
