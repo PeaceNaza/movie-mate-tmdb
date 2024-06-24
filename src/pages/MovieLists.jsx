@@ -124,7 +124,7 @@ const MovieLists = () => {
 
           {/* Pagination */}
 
-          <Flex w={{base: "100vw", sm: "auto"}} mt={80} p={20} justify="center" align="center">
+          <Grid mt={80} p={20} justify="center" align="center">
             <Button
               variant="default"
               className="disabled:cursor-not-allowed"
@@ -145,7 +145,7 @@ const MovieLists = () => {
             >
               Next page
             </Button>
-          </Flex>
+          </Grid>
         </Box>
       </Group>
     </>
