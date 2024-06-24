@@ -56,6 +56,7 @@ const Moviedetails = () => {
   return (
     <>
       <Header />
+
       <Title ta="center" fw={500} size="35px" mb={20}>
         {movieDetails.title}
       </Title>
@@ -68,13 +69,13 @@ const Moviedetails = () => {
         className="border rounded-md"
       >
         <Image
-          w={{ base: "100%", md: "50%" }}
+          w={{ base: "100%", sm: "50%" }}
           src={`https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`}
           alt={movieDetails.title}
           className="rounded-l-md"
         />
         <Box c="gray" w={{ base: "100%", md: "50%" }} p={{ base: "md", sm: "xl" }}>
-          <Text size="lg" fw={200}>
+          <Text size="xl" fw={200}>
             {movieDetails.overview}
           </Text>
 
@@ -110,7 +111,7 @@ const Moviedetails = () => {
       {/*-----------*/}
 
       <Box py={20}>
-        <Button variant="primary" onClick={() => navigate(-1)}>
+        <Button variant="primary" onClick={() => navigate(-1)} className="mb-5">
           Go back
         </Button>
       </Box>

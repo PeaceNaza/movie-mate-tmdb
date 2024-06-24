@@ -61,12 +61,12 @@ const MovieLists = () => {
 
   return (
     <>
-      <Group pos="relative" pb={20} mih="100vh" bg="white">
         <Header />
+        
         <Title fw={800} size="35px" mb={30} c="black">
           Lists of movies
         </Title>
-        <Box justify="center">
+        
           <Grid gutter="xl">
             {displayMovies?.map((movie) => (
               <Grid.Col
@@ -146,8 +146,8 @@ const MovieLists = () => {
               Next page
             </Button>
           </Grid>
-        </Box>
-      </Group>
+        
+    
     </>
   );
 };
