@@ -61,93 +61,91 @@ const MovieLists = () => {
 
   return (
     <>
-        <Header />
+      <Header />
 
-        <Title fw={800} size="35px" mb={30} c="black">
-          Lists of movies
-        </Title>
-        
-          <Grid gutter="xl">
-            {displayMovies?.map((movie) => (
-              <Grid.Col
-                span={{ base: 12, xs: 12, sm: 6, md: 6, lg: 4 }}
-                key={movie.id}
-                to={`/movie/${movie.id}`}
-              >
-                {" "}
-                <Box bg="#ffffffd8" style={{ borderWidth: "1px", borderRadius: "8px" }}>
-                  <Image
-                    src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                    alt={movie.title}
-                    className="rounded-t-lg"
-                  />
+      <Title fw={800} size="35px" mb={30} c="black">
+        Lists of movies
+      </Title>
 
-                  <Flex my="8px" justify="space-between">
-                    <Link
-                      to={`/movie/${movie.id}`}
-                      className="text-2xl mt-1 mx-5 text-[#6563d2] hover:underline mb-1"
-                      title={movie.title}
-                    >
-                      {movie.title.length > 20 ? movie.title.slice(0, 19) + "..." : movie.title}
-                    </Link>
+      <Grid gutter="xl">
+        {displayMovies?.map((movie) => (
+          <Grid.Col
+            span={{ base: 12, xs: 12, sm: 6, md: 6, lg: 4 }}
+            key={movie.id}
+            to={`/movie/${movie.id}`}
+          >
+            {" "}
+            <Box bg="#ffffffd8" style={{ borderWidth: "1px", borderRadius: "8px" }}>
+              <Image
+                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                alt={movie.title}
+                className="rounded-t-lg"
+              />
 
-                    <FontAwesomeIcon
-                      icon={faHeart}
-                      className={`heart  h-6 w-5 mt-2 mr-4 
+              <Flex my="8px" justify="space-between">
+                <Link
+                  to={`/movie/${movie.id}`}
+                  className="text-2xl mt-1 mx-5 text-[#6563d2] hover:underline mb-1"
+                  title={movie.title}
+                >
+                  {movie.title.length > 20 ? movie.title.slice(0, 19) + "..." : movie.title}
+                </Link>
+
+                <FontAwesomeIcon
+                  icon={faHeart}
+                  className={`heart  h-6 w-5 mt-2 mr-4 
          ${favoriteMovies.includes(movie.id) ? "text-[#060606]" : "text-[#d9d9d9]"}`}
-                      onClick={() => toggleFavoriteMovie(movie.id)}
-                    />
-                  </Flex>
+                  onClick={() => toggleFavoriteMovie(movie.id)}
+                />
+              </Flex>
 
-                  <Text c="#6a7587" size="sm" mx="lg" mb="8px" fw={500}>
-                    {movie.overview.slice(0, 74)}...
-                  </Text>
-                  <Flex justify="space-between" m={20} c="#6a7587">
-                    <Flex gap={5}>
-                      <FontAwesomeIcon icon={faStar} className="text-yellow-500 mt-[1px] text-xs" />
-                      <Text size="xs" fw={500} c="red">
-                        {movie.vote_average}
-                      </Text>{" "}
-                      <Text size="xs" fw={500}>
-                        ({movie.vote_count}+)
-                      </Text>{" "}
-                    </Flex>
+              <Text c="#6a7587" size="sm" mx="lg" mb="8px" fw={500}>
+                {movie.overview.slice(0, 74)}...
+              </Text>
+              <Flex justify="space-between" m={20} c="#6a7587">
+                <Flex gap={5}>
+                  <FontAwesomeIcon icon={faStar} className="text-yellow-500 mt-[1px] text-xs" />
+                  <Text size="xs" fw={500} c="red">
+                    {movie.vote_average}
+                  </Text>{" "}
+                  <Text size="xs" fw={500}>
+                    ({movie.vote_count}+)
+                  </Text>{" "}
+                </Flex>
 
-                    <Text size="xs" fw={500}>
-                      {movie.release_date}
-                    </Text>
-                  </Flex>
-                </Box>
-              </Grid.Col>
-            ))}
-          </Grid>
+                <Text size="xs" fw={500}>
+                  {movie.release_date}
+                </Text>
+              </Flex>
+            </Box>
+          </Grid.Col>
+        ))}
+      </Grid>
 
-          {/* Pagination */}
+      {/* Pagination */}
 
-          <Grid mt={50} pb={30} justify="center" align="center">
-            <Button
-              variant="default"
-              className="disabled:cursor-not-allowed"
-              onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
-              disabled={page === 1}
-            >
-              Previous
-            </Button>
+      <Grid mt={50} pb={30} justify="center" align="center">
+        <Button
+          variant="default"
+          className="disabled:cursor-not-allowed"
+          onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+          disabled={page === 1}
+        >
+          Previous
+        </Button>
 
-            <Text mx="8px" my="8px" size="xs" fw={500}>
-              Page {page} / {totalPages}
-            </Text>
-            <Button
-              variant="default"
-              className="disabled:cursor-not-allowed"
-              onClick={() => setPage((prev) => prev + 1)}
-              disabled={page === totalPages}
-            >
-              Next page
-            </Button>
-          </Grid>
-        
-    
+        <Text mx="8px" my="8px" size="xs" fw={500}>
+          Page {page} / {totalPages}
+        </Text>
+        <Button
+          variant="default"
+          className="disabled:cursor-not-allowed"
+          onClick={() => setPage((prev) => prev + 1)}
+          disabled={page === totalPages}
+        >
+          Next page
+        </Button>
+      </Grid>
     </>
   );
 };
