@@ -10,7 +10,7 @@ import { Box } from "@mantine/core";
 const App = () => {
   return (
     <MantineProvider withGlobalStyles withNormalCSS>
-      <Box className="px-5 md:px-20 min-h-screen bg-white">
+      <Box className="px-5 md:px-20 min-h-full bg-white">
         <Router>
           <Routes>
             <Route path="/" element={<Homepage />} />
