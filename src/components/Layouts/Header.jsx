@@ -4,7 +4,7 @@ import { Flex, Image, Text } from "@mantine/core";
 
 const Header = () => {
   return (
-    <Flex py={15} bg="white" w="100vw">
+    <Flex py={15}>
       <Link to={"/"} className="flex gap-3">
         <Image w={40} h={40} src={logo} alt="logo" />
         <Text c="#a855f7" fw={600} size="xl">

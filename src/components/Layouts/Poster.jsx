@@ -39,8 +39,7 @@ const Poster = ({ movieId }) => {
   return (
     <Image
       miw="160px"
-      h={230}
-      w={{ md: "250px" }}
+      w={{base: "160px", md: "250px"}}
       src={posterurl}
       alt="movie poster"
       className="transform transition-transform duration-300 hover:scale-[1.08]"

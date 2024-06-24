@@ -72,7 +72,7 @@ const Moviedetails = () => {
           w={{ base: "100%", sm: "50%" }}
           src={`https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`}
           alt={movieDetails.title}
-          className="sm:rounded-l-md xs:rounded-t-md"
+          className="sm:rounded-l-md xs:rounded-t-md sm:rounded-r-none"
         />
         <Box c="gray" w={{ base: "100%", md: "50%" }} p={{ base: "md", sm: "xl" }}>
           <Text size="xl" fw={200}>

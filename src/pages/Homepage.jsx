@@ -2,16 +2,18 @@ import { Link } from "react-router-dom";
 import Header from "../components/Layouts/Header";
 import Poster from "../components/Layouts/Poster";
 import Button from "../components/Button";
-import { Box, Flex, Group, Grid, RemoveScroll, Title } from "@mantine/core";
-import { useMediaQuery } from "@react-hook/media-query";
+import { Flex, Grid, Title } from "@mantine/core";
+
 
 const Homepage = () => {
-  const isDesktop = useMediaQuery("(min-width: 1024px)");
+ 
+  return (
+    <>
+      <Header />
+      <Grid gap="xl">
 
-  const Content = (
-    <Group gap="xl">
-      <Box className="sm:w-1/2">
-        <Title order={1} fw={600} className="xs:text-4xl lg:text-7xl">
+      <Grid.Col span={{ base: 12, md: 6, sm: 9}}>
+        <Title mt={{md: "70px", xs: "md"}} order={1} fw={600} className="sm:text-5xl lg:text-7xl">
           Learn more about your favourite movies
         </Title>
 
@@ -24,27 +26,29 @@ const Homepage = () => {
             <Button variant="outline">I am feeling lucky</Button>
           </Link>
         </Flex>
-      </Box>
+      </Grid.Col>
 
-      <Grid pb={20}>
-        <Grid.Col span={7}>
+      <Grid.Col span={{ md: 6, sm: 12}}>
+      
+        <Grid.Col span={{base: 1, md: 7, sm: 6}}>
+
           <Grid gutter="5">
-            <Grid.Col span={9} offset={{ base: 0, lg: 3 }}>
+
+            <Grid.Col span={9} offset={{md: 2.2 }}>
               <Poster movieId={183} />
             </Grid.Col>
-            <Grid.Col span={9} offset={{ base: 10.5, lg: 12, md: 9 }}>
+
+            <Grid.Col span={{xs: 9,}} offset={{base: 72, md: 11, sm: 5.5}}>
               <Poster movieId={20} />
             </Grid.Col>
-          </Grid>
-        </Grid.Col>
-      </Grid>
-    </Group>
-  );
 
-  return (
-    <>
-      <Header />
-      {isDesktop ? <RemoveScroll>{Content}</RemoveScroll> : Content}
+          </Grid>
+
+        </Grid.Col>
+        
+      </Grid.Col>
+
+    </Grid>
     </>
   );
 };
