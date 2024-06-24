@@ -72,7 +72,7 @@ const Moviedetails = () => {
           w={{ base: "100%", sm: "50%" }}
           src={`https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`}
           alt={movieDetails.title}
-          className="rounded-l-md"
+          className="sm:rounded-l-md xs:rounded-t-md"
         />
         <Box c="gray" w={{ base: "100%", md: "50%" }} p={{ base: "md", sm: "xl" }}>
           <Text size="xl" fw={200}>
@@ -110,7 +110,7 @@ const Moviedetails = () => {
       </Flex>
       {/*-----------*/}
 
-      <Box py={20}>
+      <Box py={40}>
         <Button variant="primary" onClick={() => navigate(-1)} className="mb-5">
           Go back
         </Button>

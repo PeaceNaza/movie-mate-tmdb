@@ -62,7 +62,7 @@ const MovieLists = () => {
   return (
     <>
         <Header />
-        
+
         <Title fw={800} size="35px" mb={30} c="black">
           Lists of movies
         </Title>
@@ -124,7 +124,7 @@ const MovieLists = () => {
 
           {/* Pagination */}
 
-          <Grid mt={80} p={20} justify="center" align="center">
+          <Grid mt={50} pb={30} justify="center" align="center">
             <Button
               variant="default"
               className="disabled:cursor-not-allowed"
