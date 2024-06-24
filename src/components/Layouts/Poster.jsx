@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-import { Container, Text, Image, Transition } from "@mantine/core";
+import { Text, Image, LoadingOverlay } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
 
 const Poster = ({ movieId }) => {
@@ -16,9 +16,12 @@ const Poster = ({ movieId }) => {
 
   if (isLoading) {
     return (
-      <Container className="text-black">
-        <span className="loading loading-spinner loading-lg"></span>
-      </Container>
+      <LoadingOverlay
+        visible={isLoading}
+        zIndex={1000}
+        overlayProps={{ radius: "sm", blur: 2 }}
+        loaderProps={{ color: "#a855f7", size: "xl" }}
+      />
     );
   }
 

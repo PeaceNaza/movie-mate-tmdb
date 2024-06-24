@@ -5,15 +5,7 @@ import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
 import useStore from "../store";
 import Header from "../components/Layouts/Header";
 import Button from "../components/Button";
-import {
-  LoadingOverlay,
-  Box,
-  Title,
-  Group,
-  Flex,
-  Text,
-  
-} from "@mantine/core";
+import { Image, LoadingOverlay, Box, Title, Flex, Text } from "@mantine/core";
 
 const Moviedetails = () => {
   const { movieId } = useParams();
@@ -42,6 +34,17 @@ const Moviedetails = () => {
     isFavorite ? "text-[#060606]" : "text-[#d9d9d9]"
   }`;
 
+  if (isLoading) {
+    return (
+      <LoadingOverlay
+        visible={isLoading}
+        zIndex={1000}
+        overlayProps={{ radius: "sm", blur: 2 }}
+        loaderProps={{ color: "#a855f7", size: "xl" }}
+      />
+    );
+  }
+
   if (error) {
     return (
       <Text c="red" fw="lighter" size="lg">
@@ -52,59 +55,65 @@ const Moviedetails = () => {
 
   return (
     <>
-    <Group pos="relative">
       <Header />
-      <LoadingOverlay
-          visible={isLoading}
-          zIndex={1000}
-          overlayProps={{ radius: "sm", blur: 2 }}
-          loaderProps={{color: "#a855f7", size: "xl"}}
-        />
-        
-      <Title className="text-center font-medium md:text-5xl xs:text-3xl my-6 text-black">
+      <Title ta="center" fw={500} size="35px" mb={20}>
         {movieDetails.title}
       </Title>
 
-      <Flex className="mx-auto md:flex-row md:w-3/4 border flex xs:flex-col rounded-md">
-        <img
+      {/*-----------*/}
+      <Flex
+        w={{ base: "100%", md: "75%" }}
+        mx="auto"
+        direction={{ base: "column", sm: "row" }}
+        className="border rounded-md"
+      >
+        <Image
+          w={{ base: "100%", md: "50%" }}
           src={`https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`}
           alt={movieDetails.title}
-          className="md:w-1/2 rounded-l-md"
+          className="rounded-l-md"
         />
+        <Box c="gray" w={{ base: "100%", md: "50%" }} p={{ base: "md", sm: "xl" }}>
+          <Text size="lg" fw={200}>
+            {movieDetails.overview}
+          </Text>
 
-        <Box className="md:w-1/2 md:p-10 xs:p-5 text-gray-500">
-          <Text className="text-xl font-extralight">{movieDetails.overview}</Text>
-
-          <Flex className="flex justify-between my-5 text-xs">
-            <Flex className="flex gap-1">
-              <FontAwesomeIcon icon={faStar} className="text-yellow-500 mt-[1px]" />
-              <span className="text-red-500">{movieDetails.vote_average}</span>
-              <span>({movieDetails.vote_count}+)</span>
+          <Flex my={20} justify="space-between">
+            <Flex gap={4}>
+              <FontAwesomeIcon icon={faStar} className="text-yellow-500 mt-[1px] text-xs" />
+              <Text fw={500} size="xs" c="red">
+                {movieDetails.vote_average}
+              </Text>
+              <Text fw={500} size="xs">
+                ({movieDetails.vote_count}+)
+              </Text>
             </Flex>
 
-            <span className="mr-5 text-secondary-500">{movieDetails.release_date}</span>
+            <Text fw={500} mr={20} size="xs">
+              {movieDetails.release_date}
+            </Text>
           </Flex>
 
-          <Box className="flex justify-between mt-10">
-            <p className="text-sm text-purple-600 mt-2">
+          <Flex justify="space-between" mt={40}>
+            <Text fw={500} size="sm" c="#a855f7" mt={8}>
               {movieDetails.genres.map((genre) => genre.name).join(", ")}
-            </p>
+            </Text>
 
             <FontAwesomeIcon
               icon={faHeart}
               className={`${heartClass} mt-1 ml- ml-10`}
               onClick={() => toggleFavoriteMovie(movieDetails.id)}
             />
-          </Box>
+          </Flex>
         </Box>
       </Flex>
+      {/*-----------*/}
 
-      <Box className="py-20 xs:pb-10">
+      <Box py={20}>
         <Button variant="primary" onClick={() => navigate(-1)}>
           Go back
         </Button>
       </Box>
-      </Group>
     </>
   );
 };

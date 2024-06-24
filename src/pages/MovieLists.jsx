@@ -40,6 +40,17 @@ const MovieLists = () => {
     ?.filter((movie) => movie.title.toLowerCase().includes(searchTerm.toLowerCase()))
     .slice(0, moviePerPage);
 
+  if (isLoading) {
+    return (
+      <LoadingOverlay
+        visible={isLoading}
+        zIndex={1000}
+        overlayProps={{ radius: "sm", blur: 2 }}
+        loaderProps={{ color: "#a855f7", size: "xl" }}
+      />
+    );
+  }
+
   if (error) {
     return (
       <Text c="red" fw="lighter" size="lg">
@@ -50,18 +61,12 @@ const MovieLists = () => {
 
   return (
     <>
-      <Group pos="relative">
+      <Group pos="relative" pb={20} mih="100vh" bg="white">
         <Header />
-        <LoadingOverlay
-          visible={isLoading}
-          zIndex={1000}
-          overlayProps={{ radius: "sm", blur: 2 }}
-          loaderProps={{color: "#a855f7", size: "xl" }}
-        />
-        <Box pb={20} mih="100vh" bg="white">
-          <Title fw={800} size="35px" mb={30} c="black">
-            Lists of movies
-          </Title>
+        <Title fw={800} size="35px" mb={30} c="black">
+          Lists of movies
+        </Title>
+        <Box justify="center">
           <Grid gutter="xl">
             {displayMovies?.map((movie) => (
               <Grid.Col
@@ -118,7 +123,8 @@ const MovieLists = () => {
           </Grid>
 
           {/* Pagination */}
-          <Group justify="center" mt={80} p={20}>
+
+          <Flex mt={80} p={20} justify="center" align="center">
             <Button
               variant="default"
               className="disabled:cursor-not-allowed"
@@ -127,9 +133,10 @@ const MovieLists = () => {
             >
               Previous
             </Button>
-            <span className=" mx-2 my-2 text-black sm:text-base xs:text-xs">
+
+            <Text mx="8px" my="8px" size="xs" fw={500}>
               Page {page} / {totalPages}
-            </span>
+            </Text>
             <Button
               variant="default"
               className="disabled:cursor-not-allowed"
@@ -138,7 +145,7 @@ const MovieLists = () => {
             >
               Next page
             </Button>
-          </Group>
+          </Flex>
         </Box>
       </Group>
     </>
