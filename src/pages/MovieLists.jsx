@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
 import Header from "../components/Layouts/Header";
 import { useState } from "react";
-import { LoadingOverlay, Button, Image, Title, Box, Flex, Grid, Group, Text } from "@mantine/core";
+import { LoadingOverlay, Button, Image, Title, Box, Flex, Grid, Text } from "@mantine/core";
 
 const MovieLists = () => {
   const [page, setPage] = useState(1);
