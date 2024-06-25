@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Moviedetails from "./pages/Moviedetails";
 import PageNotFound from "./pages/PageNotFound";
 import "@mantine/core/styles.css";
-import { MantineProvider } from "@mantine/core";
-import { Box } from "@mantine/core";
+import { MantineProvider, Box } from "@mantine/core";
+
 
 const App = () => {
   return (
